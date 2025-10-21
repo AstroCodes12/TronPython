@@ -1,2 +1,8 @@
+import turtle
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?D425C71F242EE1569180DB160F2A2E052C7
+t = turtle.Turtle()
+
+for i in range(4):
+    t.forward(100)
+    t.right(90)
+turtle.Screen().exitonclick()
