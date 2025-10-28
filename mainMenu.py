@@ -6,6 +6,8 @@ def mMenu():
     screen.title("TRON game")
     screen.bgcolor("black")
 
+    screen.tracer(0)
+
     pen = turtle.Turtle()
     pen.hideturtle()
     pen.speed(0)
@@ -30,6 +32,7 @@ def mMenu():
             pen.write("> Two Players", align="center", font=("Courier", 32, "bold"))
         else:
             pen.write("Two Players", align="center", font=("Courier", 32, "bold"))
+        screen.update()
 
     def move_up():
         nonlocal current_option
@@ -46,6 +49,6 @@ def mMenu():
     screen.onkey(move_up, "Up")
     screen.onkey(move_down, "Down")
 
-    turtle.done()
+    turtle.exitonclick()
 
 mMenu()
