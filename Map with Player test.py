@@ -4,7 +4,7 @@ import turtle
 screen = turtle.Screen()
 screen.setup(width=750, height=750)
 screen.bgcolor("black")
-screen.setworldcoordinates(-375, -375, 375, 375)  # make (0,0) the true visual center
+screen.setworldcoordinates(-375, -375, 375, 375)  #Make (0,0) the visual center
 
 #Create Border
 border = turtle.Turtle()
@@ -43,24 +43,24 @@ for y in range(-350, 351, 25):
 
 grid.hideturtle()
 
-# --- Create Player ---
+#Create Player
 player = turtle.Turtle()
 player.shape("square")
 player.color("lime")
 player.penup()
 player.goto(-12.5, 12.5)
-player.setheading(0)  # start facing right
+player.setheading(0)  #Start facing right
 
-# --- Player Settings ---
-step_size = 25  # moves one grid cell per step
-move_delay = 75  # milliseconds between moves (controls speed)
-direction = "up"  # current movement direction
+#Player Settings
+step_size = 25  #Moves one grid cell per step
+move_delay = 75  #Milliseconds between moves (controls speed)
+direction = "up"  #Current movement direction
 alive = True
 
-# --- Movement Functions ---
+#Movement Functions
 def go_up():
     global direction
-    if direction != "down":  # prevent instant 180 turns
+    if direction != "down":  #Prevent instant 180 turns
         direction = "up"
 
 def go_down():
@@ -78,7 +78,7 @@ def go_right():
     if direction != "left":
         direction = "right"
 
-# --- Game Loop (movement + border detection) ---
+#Game Loop (movement + border detection)
 def move():
     global alive
     if not alive:
@@ -95,7 +95,7 @@ def move():
     elif direction == "right":
         x += step_size
 
-    # Border collision detection
+    #Border collision detection
     if x < -350 or x > 350 or y < -350 or y > 350:
         player.color("red")
         alive = False
@@ -107,13 +107,13 @@ def move():
     screen.update()
     screen.ontimer(move, move_delay)  # schedule next movement
 
-# --- Keybindings ---
+#Keybindings
 screen.listen()
 screen.onkey(go_up, "Up")
 screen.onkey(go_down, "Down")
 screen.onkey(go_left, "Left")
 screen.onkey(go_right, "Right")
 
-# --- Start Game ---
+#Start Game
 move()
 screen.mainloop()
