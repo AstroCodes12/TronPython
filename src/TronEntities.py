@@ -5,19 +5,17 @@ import threading
 import math
 
 
-Tron_x = []
-Tron_y = []
+Tron_Trail = []
 
-Clu_x = []
-Clu_y = []
+Clu_Trail = []
 
 screen = Map.screen # Screen Init
-game_State = True 
+game_State = True #Game on / off
 
 """Entity INIT"""
-Tron = turtle.Turtle("arrow")
+Tron = turtle.Turtle("square")
 
-def  Tron_INIT():
+def Tron_INIT():
     global Tron
     Tron.color("blue")
     Tron.pensize(10)
@@ -26,7 +24,7 @@ def  Tron_INIT():
     Tron.pendown()
     Tron.setheading(0)
 
-Clu = turtle.Turtle("arrow")
+Clu = turtle.Turtle("square")
 
 def Clu_INIT():
     global Clu
