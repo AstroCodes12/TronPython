@@ -23,7 +23,7 @@ CluDirection = "u"
 '''Time Delay'''
 Tron_Last_Input = 0
 Clu_Last_Input = 0
-delay_Time = 0.1
+delay_Time = 0.2 #Seconds between accepted inputs
 
 
 '''Grid Movements'''
