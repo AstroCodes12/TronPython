@@ -50,6 +50,7 @@ def create_Grid():
         grid.goto(350, y)
 
     grid.hideturtle()
+create_Grid()
 
 # --- Create Player ---
 player = turtle.Turtle()
