@@ -44,10 +44,17 @@ def mMenu():
         current_option = (current_option + 1) % 2
         draw_menu()
 
+    def start_game():
+        if current_option == 0:
+            print("No Singleplayer Yet")
+        if current_option == 1:
+            print("Two player")
+
     draw_menu()
     screen.listen()
     screen.onkey(move_up, "Up")
     screen.onkey(move_down, "Down")
+    screen.onkey(start_game, "Return")
 
     turtle.exitonclick()
 
