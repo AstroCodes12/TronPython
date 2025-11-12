@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="formatting and doc strings">
       <change beforePath="$PROJECT_DIR$/src/GameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFunctions.py" afterDir="false" />
+=======
+    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="mmenu func">
+      <change afterPath="$PROJECT_DIR$/src/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+>>>>>>> 533dde1 (mmenu func)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +28,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="Test-branch" />
+=======
+        <entry key="$PROJECT_DIR$" value="Thomas" />
+>>>>>>> 533dde1 (mmenu func)
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,6 +68,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
@@ -83,8 +94,33 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.MainMenu.executor": "Run",
+    "Python.Map with Player test.executor": "Run",
+    "Python.Map.executor": "Run",
+    "Python.Tron Map.executor": "Run",
+    "Python.mainMenu.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "#1 on Thomas",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> 533dde1 (mmenu func)
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -160,6 +196,7 @@
       <option name="project" value="LOCAL" />
       <updated>1762966043580</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00007" summary="formatting">
       <option name="closed" value="true" />
       <created>1763499576541</created>
@@ -185,6 +222,9 @@
       <updated>1763500926157</updated>
     </task>
     <option name="localTasksCounter" value="10" />
+=======
+    <option name="localTasksCounter" value="7" />
+>>>>>>> 533dde1 (mmenu func)
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,9 +247,13 @@
     <MESSAGE value="Built map" />
     <MESSAGE value="Testing player movement function" />
     <MESSAGE value="mmenu func" />
+<<<<<<< HEAD
     <MESSAGE value="formatting" />
     <MESSAGE value="formatting and doc strings" />
     <option name="LAST_COMMIT_MESSAGE" value="formatting and doc strings" />
+=======
+    <option name="LAST_COMMIT_MESSAGE" value="mmenu func" />
+>>>>>>> 533dde1 (mmenu func)
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TronPython$mainMenu.coverage" NAME="mainMenu Coverage Results" MODIFIED="1762532029103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
