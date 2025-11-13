@@ -1,20 +1,24 @@
 import turtle
+import GameFunctions
+import Map
+import State_Controls
+import TronEntities
+
+
+screen = Map.screen
+screen.setup(width=800, height=600)
+screen.title("TRON game")
+screen.bgcolor("black")
+
+
+pen = turtle.Turtle()
+pen.hideturtle()
+pen.speed(0)
+pen.pencolor("cyan")
+
+current_option = 0  # 0 = Single Player, 1 = Two Players
 
 def mMenu():
-    screen = turtle.Screen()
-    screen.setup(width=800, height=600)
-    screen.title("TRON game")
-    screen.bgcolor("black")
-
-    screen.tracer(0)
-
-    pen = turtle.Turtle()
-    pen.hideturtle()
-    pen.speed(0)
-    pen.pencolor("cyan")
-
-    current_option = 0  # 0 = Single Player, 1 = Two Players
-
     def draw_menu():
         pen.clear()
         pen.penup()
@@ -35,12 +39,12 @@ def mMenu():
         screen.update()
 
     def move_up():
-        nonlocal current_option
+        global current_option
         current_option = (current_option - 1) % 2
         draw_menu()
 
     def move_down():
-        nonlocal current_option
+        global current_option
         current_option = (current_option + 1) % 2
         draw_menu()
 
@@ -49,13 +53,17 @@ def mMenu():
             print("No Singleplayer Yet")
         if current_option == 1:
             print("Two player")
+            return True
 
-    draw_menu()
-    screen.listen()
-    screen.onkey(move_up, "Up")
-    screen.onkey(move_down, "Down")
-    screen.onkey(start_game, "Return")
+                
+                
+    print(TronEntities.game_State)
 
-    turtle.exitonclick()
-
-mMenu()
+    if TronEntities.game_State == False:
+        draw_menu()
+        screen.listen()
+        screen.onkey(move_up, "Up")
+        screen.onkey(move_down, "Down")
+        screen.onkey(start_game, "Return")    
+    else:
+        return True

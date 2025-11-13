@@ -1,8 +1,10 @@
 import turtle
+import random
 
 screen = turtle.Screen()
 border = turtle.Turtle()
 grid = turtle.Turtle()
+
 
 #Create Background
 def create_Background():
@@ -51,8 +53,8 @@ def create_Grid():
 
     grid.hideturtle()
 
+
 def init_MAP():
     create_Background()
     create_Border()
     create_Grid()
-
