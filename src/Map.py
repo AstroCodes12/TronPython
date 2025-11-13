@@ -1,10 +1,16 @@
 import turtle
+import random
 
 screen = turtle.Screen()
 border = turtle.Turtle()
 grid = turtle.Turtle()
 
+<<<<<<< HEAD
 # Create Background
+=======
+
+#Create Background
+>>>>>>> 0ad9867 (Changed main menu to be navigate into the box to start. Menu to game and back to menu works, when configured this way)
 def create_Background():
     """Builds the turtle screen on which the rest of the background features will be drawn"""
     global screen
@@ -54,9 +60,9 @@ def create_Grid():
 
     grid.hideturtle()
 
+
 def init_MAP():
     """Calls to the previous map generation functions and puts them all into one to later be called in the main program"""
     create_Background()
     create_Border()
     create_Grid()
-

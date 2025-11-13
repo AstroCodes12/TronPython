@@ -3,6 +3,8 @@ from pynput import keyboard
 import math
 import Map
 import time
+import menu
+import State_Controls
 
 
 """Entities"""
@@ -12,9 +14,12 @@ Tron_Trail = TronEntities.Tron_Trail
 Clu = TronEntities.Clu
 Clu_Trail = TronEntities.Clu_Trail
 
+<<<<<<< HEAD
 """Game Variables"""
 game_State = TronEntities.game_State
 
+=======
+>>>>>>> 0ad9867 (Changed main menu to be navigate into the box to start. Menu to game and back to menu works, when configured this way)
 
 """Player Directions"""
 Trondirection = "u"
@@ -34,14 +39,15 @@ DELAY = 100 #Miliseconds between movements (reduces lag)
 screen = Map.screen
 
 def killing_Animation(player):
-    global game_State
+    global Tron_Trail, Clu_Trail
     for i in range(4):
             player.hideturtle()
             time.sleep(.5)
             player.showturtle()
             time.sleep(.5)
-    game_State = False
-    print(game_State)
+    Tron_Trail = []
+    Clu_Trail = []
+    TronEntities.game_State = False
 
 
 
@@ -102,13 +108,9 @@ def game_Loop():
 
     tx, ty = Tron.pos()
     cx, cy = Clu.pos()
-
-    global game_State
-    if game_State == False:
-        return #wont run if game_State is false
     
     record_Trail()
-    trail_Kill()
+    TronEntities.game_State = trail_Kill()
     
     if Trondirection == "u":
         ty += Step    
@@ -130,17 +132,23 @@ def game_Loop():
 
     if tx < -350 or tx > 350 or ty > 350 or ty < -350:
         killing_Animation(Tron)
-        return #Ends game
     
     if cx < -350 or cx > 350 or cy > 350 or cy < -350:
         killing_Animation(Clu)
-        return #Ends game
 
     Tron.goto(tx, ty)
     Clu.goto(cx, cy) 
 
-    screen.update() #Must run at bottom of function, before .ontimer, which calls the function again
-    screen.ontimer(game_Loop, DELAY) #Calls the function again, causing a loop. DELAY is to reduce glitches
+    if TronEntities.game_State == True:
+        screen.update() #Must run at bottom of function, before .ontimer, which calls the function again
+        screen.ontimer(game_Loop, DELAY) #Calls the function again, causing a loop. DELAY is to reduce glitches
+    else:
+        print(f" game state: {TronEntities.game_State}")
+        screen.reset()
+        Trondirection = "u"
+        CluDirection = "u"
+        State_Controls.runGame()
+
 
 
 """Keyboard Recording"""
@@ -182,32 +190,55 @@ def on_press(key):
                 print("Too Early on s")
     
         elif key == keyboard.Key.up:
-            if currentTime - Clu_Last_Input > delay_Time:
-                Up("Clu")
-                Clu_Last_Input = currentTime
+            if not TronEntities.game_State:
+                    if menu.playerdirection != "d":
+                        menu.playerdirection = "u"
+
+            elif TronEntities.game_State:        
+                if currentTime - Clu_Last_Input > delay_Time:
+                    Up("Clu")
+                    Clu_Last_Input = currentTime
             else:
                 print("Too Early on Up Key")
 
         elif key == keyboard.Key.right:
-            if currentTime - Clu_Last_Input > delay_Time:
-                right("Clu")
-                Clu_Last_Input = currentTime
+            if not TronEntities.game_State:
+                if menu.playerdirection != "l":
+                    menu.playerdirection = 'r'
+
+            elif TronEntities.game_State:
+                if currentTime - Clu_Last_Input > delay_Time:
+                    right("Clu")
+                    Clu_Last_Input = currentTime
             else:
                 print("Too Early on right Key")
 
         elif key == keyboard.Key.left:
-            if currentTime - Clu_Last_Input > delay_Time:
-                left("Clu")
-                Clu_Last_Input = currentTime
+            if not TronEntities.game_State:
+                if menu.playerdirection != "r":
+                    menu.playerdirection = 'l'
+
+            elif TronEntities.game_State:
+                if currentTime - Clu_Last_Input > delay_Time:
+                    left("Clu")
+                    Clu_Last_Input = currentTime
             else:
                 print("Too Early on left Key")
 
         elif key == keyboard.Key.down:
-            if currentTime - Clu_Last_Input > delay_Time:
-                Down("Clu")
-                Clu_Last_Input = currentTime
+            if not TronEntities.game_State:
+                if menu.playerdirection != "u":
+                    menu.playerdirection = "d"
+
+            elif TronEntities.game_State:
+                if currentTime - Clu_Last_Input > delay_Time:
+                    Down("Clu")
+                    Clu_Last_Input = currentTime
             else:
                 print("Too Early on Down Key")
+        elif key == keyboard.Key.space:
+            if TronEntities.game_State == False:
+                menu.menuStart = True
 
     except AttributeError:
         pass
@@ -263,7 +294,6 @@ def record_Trail():
     
 
 def trail_Kill():
-    global game_State
     global Tron_Trail
     global Clu_Trail
 
@@ -280,8 +310,15 @@ def trail_Kill():
             Tron.showturtle()
             Clu.showturtle()
             time.sleep(.5)
-        game_State = False
-        return
+
+        same.clear()
+        Tron_set.clear()
+        Clu_set.clear()
+        Tron_Trail = []
+        Clu_Trail = []
+        print("collision")
+        return False
+
     elif len(Tron_Trail) != len(Tron_set) or len(Clu_Trail) != len(Clu_set):
         for i in range(4):
             Tron.hideturtle()
@@ -290,5 +327,13 @@ def trail_Kill():
             Tron.showturtle()
             Clu.showturtle()
             time.sleep(.5)
-        game_State = False
-        return
+
+        same.clear()
+        Tron_set.clear()
+        Clu_set.clear()
+        Tron_Trail = []
+        Clu_Trail = []
+        print("Backtrack")
+        return False
+    else:
+        return True
