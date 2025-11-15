@@ -74,7 +74,10 @@ def menu_Loop():
         elif playerdirection == "l":
             px -= 25
 
-        player.goto(px, py)
+        if not (py > 375 or py < -375 or px > 375 or px < -375):
+            player.goto(px, py)
+        else:
+            player.goto(0,0)
     else:
         while menuStart == False:
             currentTime = time.time()
