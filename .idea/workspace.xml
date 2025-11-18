@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="mmenu func">
-      <change afterPath="$PROJECT_DIR$/src/MainMenu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="??">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/State_Controls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TronEntities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronEntities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +68,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Main.executor": "Run",
     "Python.MainMenu.executor": "Run",
     "Python.Map with Player test.executor": "Run",
     "Python.Map.executor": "Run",
@@ -70,6 +77,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "#1 on Thomas",
