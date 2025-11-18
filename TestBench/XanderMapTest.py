@@ -11,6 +11,7 @@ def create_Background():
     screen.bgcolor("black")
     screen.setworldcoordinates(-375, -375, 375, 375)  # make (0,0) the true visual center
 create_Background()
+
 #Create Border
 def create_Border():
     global border
