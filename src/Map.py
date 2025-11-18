@@ -1,8 +1,11 @@
 import turtle
 
+# Single shared screen for the app
 screen = turtle.Screen()
-border = turtle.Turtle()
-grid = turtle.Turtle()
+
+# Do not create drawing turtles at import time; create them when drawing the map
+border = None
+grid = None
 
 #Create Background
 def create_Background():
@@ -14,6 +17,7 @@ def create_Background():
 #Create Border
 def create_Border():
     global border
+    border = turtle.Turtle()          # create at draw-time
     border.color("cyan")
     border.speed(0)
     border.pensize(4)
@@ -27,10 +31,10 @@ def create_Border():
 
     border.hideturtle()
 
-
 #Create Grid Lines
 def create_Grid():
     global grid
+    grid = turtle.Turtle()            # create at draw-time
     grid.speed(0)
     grid.color("gray20")
     grid.pensize(1)
@@ -55,4 +59,3 @@ def init_MAP():
     create_Background()
     create_Border()
     create_Grid()
-

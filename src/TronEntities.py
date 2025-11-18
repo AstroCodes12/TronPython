@@ -1,36 +1,50 @@
 import turtle
 import Map
-from pynput import keyboard
-import threading
-import math
 
+# Entities start as placeholders; created only when the game starts
+Tron = None
+Clu = None
 
+# Trails (canonical lists)
 Tron_Trail = []
-
 Clu_Trail = []
 
-screen = Map.screen # Screen Init
-game_State = True #Game on / off
-
-"""Entity INIT"""
-Tron = turtle.Turtle("square")
+# Shared screen and game state
+screen = Map.screen
+game_State = True  # True == game running; controllers will set to False to stop
 
 def Tron_INIT():
-    global Tron
+    """
+    Create and initialize the Tron turtle at game start.
+    """
+    global Tron, Tron_Trail, game_State
+    Tron_Trail = []
+    game_State = True
+
+    Tron = turtle.Turtle("square")
+    Tron.hideturtle()
     Tron.color("blue")
     Tron.pensize(10)
-    Tron.penup()
+    Tron.penup()                # important: don't draw while placing
     Tron.goto(-200, 0)
-    Tron.pendown()
     Tron.setheading(0)
-
-Clu = turtle.Turtle("square")
+    Tron.pendown()
+    Tron.showturtle()
 
 def Clu_INIT():
-    global Clu
+    """
+    Create and initialize the Clu turtle at game start.
+    """
+    global Clu, Clu_Trail, game_State
+    Clu_Trail = []
+    game_State = True
+
+    Clu = turtle.Turtle("square")
+    Clu.hideturtle()
     Clu.color("red")
     Clu.pensize(10)
-    Clu.penup()
+    Clu.penup()                 # important: don't draw while placing
     Clu.goto(200, 0)
-    Clu.pendown()
     Clu.setheading(180)
+    Clu.pendown()
+    Clu.showturtle()
