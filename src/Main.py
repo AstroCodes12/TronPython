@@ -23,13 +23,14 @@ pen.pencolor("cyan")
 current_option = 0  # 0 = Single Player, 1 = Two Players
 
 def runGame():
-    # Start the game only if the shared flag indicates the game is on
     if TronEntities.game_State:
-        # hide/clear the menu pen so it doesn't overlap the map or confuse players
         pen.clear()
         pen.hideturtle()
+        screen.onkey(None, "Up")
+        screen.onkey(None, "Down")
+        screen.onkey(None, "Return")
 
-        # Start pynput listener (changes only direction globals)
+
         pynput_listener = keyboard.Listener(on_press=GameFunctions.on_press)
         pynput_thread = threading.Thread(target=pynput_listener.start)
         pynput_thread.daemon = True
@@ -82,6 +83,7 @@ def mMenu():
             print("No Singleplayer Yet")
         elif current_option == 1:
             runGame()
+
 
     screen.onkey(move_up, "Up")
     screen.onkey(move_down, "Down")

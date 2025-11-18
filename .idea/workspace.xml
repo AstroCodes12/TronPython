@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFunctions.py" afterDir="false" />
+    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="mmenu func no test bench">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/State_Controls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TronEntities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronEntities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +160,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762966043580</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mmenu func">
+      <option name="closed" value="true" />
+      <created>1763493572965</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763493572965</updated>
+    </task>
+    <task id="LOCAL-00008" summary="mmenu func no test bench">
+      <option name="closed" value="true" />
+      <created>1763493613121</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1763493613121</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,7 +199,8 @@
     <MESSAGE value="Built map" />
     <MESSAGE value="Testing player movement function" />
     <MESSAGE value="mmenu func" />
-    <option name="LAST_COMMIT_MESSAGE" value="mmenu func" />
+    <MESSAGE value="mmenu func no test bench" />
+    <option name="LAST_COMMIT_MESSAGE" value="mmenu func no test bench" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TronPython$mainMenu.coverage" NAME="mainMenu Coverage Results" MODIFIED="1762532029103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
