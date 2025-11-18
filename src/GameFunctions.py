@@ -5,14 +5,14 @@ import Map
 import time
 
 
-'''Entities'''
+"""Entities"""
 Tron = TronEntities.Tron
 Tron_Trail = TronEntities.Tron_Trail
 
 Clu = TronEntities.Clu
 Clu_Trail = TronEntities.Clu_Trail
 
-'''Game Variables'''
+"""Game Variables"""
 game_State = TronEntities.game_State
 
 
@@ -20,7 +20,7 @@ game_State = TronEntities.game_State
 Trondirection = "u"
 CluDirection = "u"
 
-'''Time Delay'''
+"""Time Delay"""
 Tron_Last_Input = 0
 Clu_Last_Input = 0
 delay_Time = 0.2 #Seconds between accepted inputs
@@ -30,7 +30,7 @@ delay_Time = 0.2 #Seconds between accepted inputs
 Step = 25 # pixels per step -- keep at this size to keep the players on the grid
 DELAY = 100 #Miliseconds between movements (reduces lag)
 
-'''Screen Access'''
+"""Screen Access"""
 screen = Map.screen
 
 def killing_Animation(player):

@@ -10,7 +10,7 @@ Tron_Trail = []
 Clu_Trail = []
 
 screen = Map.screen # Screen Init
-game_State = True #Game on / off
+game_State = True # Game on / off
 
 """Entity INIT"""
 Tron = turtle.Turtle("square")
