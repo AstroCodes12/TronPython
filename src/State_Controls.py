@@ -10,9 +10,9 @@ def runGame():
     
     if TronEntities.game_State == False:
         print("Running menu INIT")
-        menu.init_Menu()
-        menu.menu_Loop()
-        #TronEntities.game_State = MainMenu.mMenu() #gets stuck on Menu screen
+        #menu.init_Menu()
+        #menu.menu_Loop()
+        MainMenu.mMenu() #gets stuck on Menu screen
 
     else:
         print("Running game INIT")

@@ -53,17 +53,16 @@ def mMenu():
             print("No Singleplayer Yet")
         if current_option == 1:
             print("Two player")
-            return True
-
+            
+            TronEntities.game_State = True
+            screen.reset()
+            State_Controls.runGame()
                 
                 
     print(TronEntities.game_State)
 
-    if TronEntities.game_State == False:
-        draw_menu()
-        screen.listen()
-        screen.onkey(move_up, "Up")
-        screen.onkey(move_down, "Down")
-        screen.onkey(start_game, "Return")    
-    else:
-        return True
+    draw_menu()
+    screen.listen()
+    screen.onkey(move_up, "Up")
+    screen.onkey(move_down, "Down")
+    screen.onkey(start_game, "Return")    
