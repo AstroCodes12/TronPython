@@ -26,7 +26,7 @@ Clu_Last_Input = 0
 delay_Time = 0.2 #Seconds between accepted inputs
 
 
-'''Grid Movements'''
+"""Grid Movements"""
 Step = 25 # pixels per step -- keep at this size to keep the players on the grid
 DELAY = 100 #Miliseconds between movements (reduces lag)
 
