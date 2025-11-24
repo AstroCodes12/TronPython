@@ -7,12 +7,12 @@ import MainMenu
 
 
 def runGame():
+    """Decides where to send user, menu or game, based on gamestate"""
+
     if TronEntities.game_State == False:
         print("Running menu INIT")
-        # menu.init_Menu()
-        # menu.menu_Loop()
-        MainMenu.mMenu()  # gets stuck on Menu screen
-
+        MainMenu.mMenu()  
+        
     else:
         print("Running game INIT")
 

@@ -16,11 +16,8 @@ game_State = True # Game on / off
 game_State = False #Game on / off
 >>>>>>> 0ad9867 (Changed main menu to be navigate into the box to start. Menu to game and back to menu works, when configured this way)
 
-"""Entity placeholders (will be created in INIT)"""
-Tron = None
-Clu = None
-
 def Tron_INIT():
+    """Defines Tron Player"""
     global Tron, Tron_Trail
     Tron = turtle.Turtle("square")
     Tron.color("blue")
@@ -33,6 +30,7 @@ def Tron_INIT():
     Tron_Trail = []
 
 def Clu_INIT():
+    """Defines Clu Player"""
     global Clu, Clu_Trail
     Clu = turtle.Turtle("square")
     Clu.color("red")
