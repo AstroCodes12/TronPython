@@ -12,10 +12,11 @@ screen.setup(width=750, height=750)
 screen.title("TRON game")
 screen.bgcolor("black")
 
-current_option = 0  # 0 = Check Score, 1 = Start
+current_option = 1  # 0 = Check Score, 1 = Start, -1 = Quit
 
 
 def mMenu():
+    """Main overall menu loop"""
     global pen
     screen.setup(width=750, height=750)
     screen.title("TRON game")
@@ -26,22 +27,30 @@ def mMenu():
     pen.pencolor("cyan")
 
     def draw_menu():
+        """Draws the menu
+            --Is called any time theres an input to move game cursor"""
         pen.clear()
         pen.penup()
         pen.goto(0, 150)
         pen.write("TRON", align="center", font=("Courier", 80, "bold"))
 
-        pen.goto(0, 50)
+        pen.goto(0, 0)
         if current_option == 0:
             pen.write("> CHECK SCORE", align="center", font=("Courier", 32, "bold"))
         else:
             pen.write("CHECK SCORE", align="center", font=("Courier", 32, "bold"))
 
-        pen.goto(0, 0)
+        pen.goto(0, 50)
         if current_option == 1:
             pen.write("> START", align="center", font=("Courier", 32, "bold"))
         else:
             pen.write("START", align="center", font=("Courier", 32, "bold"))
+
+        pen.goto(0, -50)
+        if current_option == -1:
+            pen.write("> Quit", align="center", font=("Courier", 32, "bold"))
+        else:
+            pen.write("Quit", align="center", font=("Courier", 32, "bold"))
         screen.update()
 
     def draw_scores():
@@ -69,13 +78,27 @@ def mMenu():
         screen.update()
 
     def move_up():
+        """Moves menu cursor up"""
         global current_option
-        current_option = (current_option - 1) % 2
+        if current_option != 1:
+            print(f"Prev {current_option}")
+            current_option = current_option + 1
+            print(f"Next {current_option}")
+        else: 
+            current_option = 1 
+            print("current is alr 1")
         draw_menu()
 
     def move_down():
+        """Moves menu cursor down"""
         global current_option
-        current_option = (current_option + 1) % 2
+        if current_option != -1:
+            print(f"Prev {current_option}")
+            current_option = current_option - 1
+            print(f"next {current_option}")
+        else:
+            current_option = -1
+            print("Current is alr -1")
         draw_menu()
 
     def return_to_menu():
@@ -98,7 +121,7 @@ def mMenu():
             screen.onkey(None, "Return")
             draw_scores()
             screen.onkey(return_to_menu, "space")
-
+        
         if current_option == 1:
             print("Start")
             screen.onkey(None, "Up")
@@ -112,6 +135,9 @@ def mMenu():
 
             TronEntities.game_State = True
             State_Controls.runGame()
+
+        if current_option == -1:
+            screen.bye()
 
     print(TronEntities.game_State)
 

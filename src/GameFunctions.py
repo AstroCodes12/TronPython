@@ -28,6 +28,8 @@ screen = Map.screen
 
 
 def killing_Animation(player):
+    """Runs score logic, sends back to menu, and runs flashing animation for turtles"""
+    
     global Tron_Trail, Clu_Trail
     for i in range(4):
         player.hideturtle()
@@ -46,12 +48,14 @@ def killing_Animation(player):
     Tron_Trail = []
     Clu_Trail = []
     TronEntities.game_State = False
+    return
 
 
-"""Direction controls"""
+"""Player Direction controls"""
 
 
 def Up(player):
+    """Sets player Direction"""
     global Trondirection
     global CluDirection
     if player == "Tron":
@@ -65,6 +69,7 @@ def Up(player):
 
 
 def Down(player):
+    """Sets player Direction"""
     global Trondirection
     global CluDirection
     if player == "Tron":
@@ -78,6 +83,7 @@ def Down(player):
 
 
 def left(player):
+    """Sets player Direction"""
     global Trondirection
     global CluDirection
     if player == "Tron":
@@ -91,6 +97,7 @@ def left(player):
 
 
 def right(player):
+    """Sets player Direction"""
     global Trondirection
     global CluDirection
     if player == "Tron":
@@ -104,9 +111,17 @@ def right(player):
 
 
 def game_Loop():
+    """This is the central game logic. This uses the keyboard readings to change player direction
+        --It runs by reading player location, reading the set player direction, which may have been
+        changed in the previous frame, and moving the player by 1 25 pixel step in the set direction
+        --It is a recursive function and updates the screen every "Frame" 
+        --It will continue to run until gamestate is changed to false, which it then runs runGame() again,
+        Taking you to the menu again"""
+    
     global Trondirection
     global CluDirection
 
+    #Splits Player x and y positions
     tx, ty = TronEntities.Tron.pos()
     cx, cy = TronEntities.Clu.pos()
 
@@ -114,13 +129,13 @@ def game_Loop():
     TronEntities.game_State = trail_Kill()
 
     if Trondirection == "u":
-        ty += Step
+        ty += Step #Sets going up
     elif Trondirection == "r":
-        tx += Step
+        tx += Step #Sets going right
     elif Trondirection == "d":
-        ty -= Step
+        ty -= Step #Sets going down
     elif Trondirection == "l":
-        tx -= Step
+        tx -= Step #Sets going left
 
     if CluDirection == "u":
         cy += Step
@@ -131,15 +146,18 @@ def game_Loop():
     elif CluDirection == "l":
         cx -= Step
 
+    #Looks for border collision
     if tx < -350 or tx > 350 or ty > 350 or ty < -350:
         killing_Animation(TronEntities.Tron)
 
     if cx < -350 or cx > 350 or cy > 350 or cy < -350:
         killing_Animation(TronEntities.Clu)
 
+    #Moves players
     TronEntities.Tron.goto(tx, ty)
     TronEntities.Clu.goto(cx, cy)
 
+    #Checks game state
     if TronEntities.game_State == True:
         screen.update()  # Must run at bottom of function, before .ontimer, which calls the function again
         screen.ontimer(game_Loop, DELAY)  # Calls the function again, causing a loop. DELAY is to reduce glitches
@@ -152,9 +170,10 @@ def game_Loop():
 
 
 """Keyboard Recording"""
-
-
 def on_press(key):
+    """This uses Pynput's keyboard method to read for inputs from the keyboard. I used this instead of turtle's input readings
+        so that I could run the listener and game logic on separate threads, increasing efficiency"""
+    
     global Trondirection
     global CluDirection
     global Tron_Last_Input
@@ -192,11 +211,7 @@ def on_press(key):
                 print("Too Early on s")
 
         elif key == keyboard.Key.up:
-            if not TronEntities.game_State:
-                if menu.playerdirection != "d":
-                    menu.playerdirection = "u"
-
-            elif TronEntities.game_State:
+            if TronEntities.game_State:
                 if currentTime - Clu_Last_Input > delay_Time:
                     Up("Clu")
                     Clu_Last_Input = currentTime
@@ -204,11 +219,8 @@ def on_press(key):
                 print("Too Early on Up Key")
 
         elif key == keyboard.Key.right:
-            if not TronEntities.game_State:
-                if menu.playerdirection != "l":
-                    menu.playerdirection = 'r'
 
-            elif TronEntities.game_State:
+            if TronEntities.game_State:
                 if currentTime - Clu_Last_Input > delay_Time:
                     right("Clu")
                     Clu_Last_Input = currentTime
@@ -216,11 +228,8 @@ def on_press(key):
                 print("Too Early on right Key")
 
         elif key == keyboard.Key.left:
-            if not TronEntities.game_State:
-                if menu.playerdirection != "r":
-                    menu.playerdirection = 'l'
 
-            elif TronEntities.game_State:
+            if TronEntities.game_State:
                 if currentTime - Clu_Last_Input > delay_Time:
                     left("Clu")
                     Clu_Last_Input = currentTime
@@ -228,76 +237,30 @@ def on_press(key):
                 print("Too Early on left Key")
 
         elif key == keyboard.Key.down:
-            if not TronEntities.game_State:
-                if menu.playerdirection != "u":
-                    menu.playerdirection = "d"
 
-            elif TronEntities.game_State:
+            if TronEntities.game_State:
                 if currentTime - Clu_Last_Input > delay_Time:
                     Down("Clu")
                     Clu_Last_Input = currentTime
             else:
                 print("Too Early on Down Key")
-        elif key == keyboard.Key.space:
-            if TronEntities.game_State == False:
-                menu.menuStart = True
 
     except AttributeError:
         pass
 
-
-""" Keeping just in case. Use to run things on the release of a key!
-def on_release(key):
-    global w_State
-    global d_State
-    global a_State
-    global s_State
-
-    global up_State
-    global right_State
-    global left_State
-    global down_State
-
-    global game_State
-
-    global Tron_last_Turn
-    global Clu_Last_Turn
-    try:
-        if key == keyboard.KeyCode.from_char('w'):
-            w_State = False
-            #print("W key released - w_State set to False")
-        elif key == keyboard.KeyCode.from_char('d'):
-            d_State = False
-            #print("D key released - d_State set to False")
-        elif key == keyboard.KeyCode.from_char('a'):
-            a_State = False
-            #print("A key released - a_State set to False")
-        elif key == keyboard.KeyCode.from_char("s"):
-            s_State = False
-        elif key == keyboard.Key.up:
-            up_State = False
-            #print("up key released - up_State set to False")
-        elif key == keyboard.Key.right:
-            right_State = False
-            #print("right key released - right_State set to False")
-        elif key == keyboard.Key.left:
-            left_State = False
-            #print("left key released - left_State set to False")
-        elif key == keyboard.Key.down:
-            down_State = False
-
-    except AttributeError:
-        pass    
-"""
 """Record Trails and Movement Loop"""
 
 
 def record_Trail():
+    """Records every previous position of the players"""
     Tron_Trail.append(TronEntities.Tron.pos())  # Appends new values to lists
     Clu_Trail.append(TronEntities.Clu.pos())
 
 
 def trail_Kill():
+    """Looks for each players current position in the opposing player's previous positions list as well as it's own list
+        --If it finds the current position in the list, it sets game state to false, ending the game"""
+    
     global Tron_Trail
     global Clu_Trail
 
@@ -307,37 +270,52 @@ def trail_Kill():
     same = Tron_set & Clu_set
 
     if len(same) != 0:
-        for i in range(4):
-            TronEntities.Tron.hideturtle()
-            TronEntities.Clu.hideturtle()
-            time.sleep(.5)
-            TronEntities.Tron.showturtle()
-            TronEntities.Clu.showturtle()
-            time.sleep(.5)
+        #Checks for who won
+        if TronEntities.Tron.pos() in same and not TronEntities.Clu.pos() in same:
+            killing_Animation(TronEntities.Tron)
+        
+        if TronEntities.Clu.pos() in same and not TronEntities.Tron.pos() in same:
+            killing_Animation(TronEntities.Clu)
+
+        if TronEntities.Clu.pos() in same and TronEntities.Tron.pos() in same:
+            for i in range(4):
+                TronEntities.Tron.hideturtle()
+                TronEntities.Clu.hideturtle()
+                time.sleep(0.5)
+                TronEntities.Tron.showturtle()
+                TronEntities.Clu.showturtle()
+                time.sleep(0.5)
+        else:
+            print("No player collisions or backtracks detected")
+
+        #Resets all lists for next round
+        same.clear()
+        Tron_set.clear()
+        Clu_set.clear()
+        Tron_Trail = []
+        Clu_Trail = []
+        Clu_Trail = []
+        return False
+
+    elif len(Tron_Trail) != len(Tron_set):
+        killing_Animation(TronEntities.Tron)
+        
+        same.clear()
+        Tron_set.clear()
+        Clu_set.clear()
+        Tron_Trail = []
+        Clu_Trail = []
+        return False
+    
+    elif len(Clu_Trail) != len(Clu_set):
+        killing_Animation(TronEntities.Clu)
 
         same.clear()
         Tron_set.clear()
         Clu_set.clear()
         Tron_Trail = []
         Clu_Trail = []
-        print("collision")
         return False
-
-    elif len(Tron_Trail) != len(Tron_set) or len(Clu_Trail) != len(Clu_set):
-        for i in range(4):
-            TronEntities.Tron.hideturtle()
-            TronEntities.Clu.hideturtle()
-            time.sleep(.5)
-            TronEntities.Tron.showturtle()
-            TronEntities.Clu.showturtle()
-            time.sleep(.5)
-
-        same.clear()
-        Tron_set.clear()
-        Clu_set.clear()
-        Tron_Trail = []
-        Clu_Trail = []
-        print("Backtrack")
-        return False
+    
     else:
         return True

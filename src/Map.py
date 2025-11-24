@@ -6,8 +6,8 @@ border = None
 grid = None
 
 
-# Create Background
 def create_Background():
+    """Makes background black and sets dimensions"""
     global screen
     screen.setup(width=750, height=750)
     screen.bgcolor("black")
@@ -20,8 +20,8 @@ def create_Background():
         MainMenu.pen.penup()
 
 
-# Create Border
 def create_Border():
+    """Draws the outer border"""
     global border
     if border is not None:
         border.clear()  # clear any old drawings
@@ -46,6 +46,7 @@ def create_Border():
 
 # Create Grid Lines
 def create_Grid():
+    """Draws the background grid"""
     global grid
     grid = turtle.Turtle()
     grid.hideturtle()
@@ -72,6 +73,7 @@ def create_Grid():
 
 
 def init_MAP():
+    """Draws background, Borders, and Grid"""
     create_Background()
     create_Border()
     create_Grid()

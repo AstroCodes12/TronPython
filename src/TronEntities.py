@@ -12,11 +12,8 @@ screen = Map.screen # Screen Init
 
 game_State = False #Game on / off
 
-"""Entity placeholders (will be created in INIT)"""
-Tron = None
-Clu = None
-
 def Tron_INIT():
+    """Defines Tron Player"""
     global Tron, Tron_Trail
     Tron = turtle.Turtle("square")
     Tron.color("blue")
@@ -29,6 +26,7 @@ def Tron_INIT():
     Tron_Trail = []
 
 def Clu_INIT():
+    """Defines Clu Player"""
     global Clu, Clu_Trail
     Clu = turtle.Turtle("square")
     Clu.color("red")
