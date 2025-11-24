@@ -6,32 +6,36 @@ import math
 
 
 Tron_Trail = []
-
 Clu_Trail = []
 
 screen = Map.screen # Screen Init
 
 game_State = False #Game on / off
 
-"""Entity INIT"""
-Tron = turtle.Turtle("square")
+"""Entity placeholders (will be created in INIT)"""
+Tron = None
+Clu = None
 
 def Tron_INIT():
-    global Tron
+    global Tron, Tron_Trail
+    Tron = turtle.Turtle("square")
     Tron.color("blue")
     Tron.pensize(10)
     Tron.penup()
     Tron.goto(-200, 0)
     Tron.pendown()
     Tron.setheading(0)
-
-Clu = turtle.Turtle("square")
+    # reset trail
+    Tron_Trail = []
 
 def Clu_INIT():
-    global Clu
+    global Clu, Clu_Trail
+    Clu = turtle.Turtle("square")
     Clu.color("red")
     Clu.pensize(10)
     Clu.penup()
     Clu.goto(200, 0)
     Clu.pendown()
     Clu.setheading(180)
+    # reset trail
+    Clu_Trail = []

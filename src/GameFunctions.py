@@ -1,19 +1,14 @@
 import TronEntities
 from pynput import keyboard
-import math
 import Map
 import time
-import menu
 import State_Controls
-
+import ScoreMgr
 
 '''Entities'''
-Tron = TronEntities.Tron
 Tron_Trail = TronEntities.Tron_Trail
 
-Clu = TronEntities.Clu
 Clu_Trail = TronEntities.Clu_Trail
-
 
 """Player Directions"""
 Trondirection = "u"
@@ -22,101 +17,113 @@ CluDirection = "u"
 '''Time Delay'''
 Tron_Last_Input = 0
 Clu_Last_Input = 0
-delay_Time = 0.2 #Seconds between accepted inputs
-
+delay_Time = 0.2  # Seconds between accepted inputs
 
 '''Grid Movements'''
-Step = 25 # pixels per step -- keep at this size to keep the players on the grid
-DELAY = 100 #Miliseconds between movements (reduces lag)
+Step = 25  # pixels per step -- keep at this size to keep the players on the grid
+DELAY = 100  # Miliseconds between movements (reduces lag)
 
 '''Screen Access'''
 screen = Map.screen
 
+
 def killing_Animation(player):
     global Tron_Trail, Clu_Trail
     for i in range(4):
-            player.hideturtle()
-            time.sleep(.5)
-            player.showturtle()
-            time.sleep(.5)
+        player.hideturtle()
+        time.sleep(.5)
+        player.showturtle()
+        time.sleep(.5)
+
+    # Determine winner and update score
+    if player == TronEntities.Tron:
+        print("Clu wins!")
+        ScoreMgr.update_winner("Clu")
+    elif player == TronEntities.Clu:
+        print("Tron wins!")
+        ScoreMgr.update_winner("Tron")
+
     Tron_Trail = []
     Clu_Trail = []
     TronEntities.game_State = False
 
 
-
 """Direction controls"""
+
+
 def Up(player):
     global Trondirection
     global CluDirection
     if player == "Tron":
-        if Trondirection != "d": #Stops 180 degree turns
-                print(f"Tron {Trondirection} to u")
-                Trondirection = "u"
+        if Trondirection != "d":  # Stops 180 degree turns
+            print(f"Tron {Trondirection} to u")
+            Trondirection = "u"
     elif player == "Clu":
         if CluDirection != "d":
             print(f"Clu {CluDirection} to u")
             CluDirection = "u"
 
+
 def Down(player):
     global Trondirection
     global CluDirection
     if player == "Tron":
-        if Trondirection != "u": #Stops 180 degree turns
-                print(f"Tron {Trondirection} to d")
-                Trondirection = "d"
+        if Trondirection != "u":  # Stops 180 degree turns
+            print(f"Tron {Trondirection} to d")
+            Trondirection = "d"
     elif player == "Clu":
         if CluDirection != "u":
             print(f"Clu {CluDirection} to d")
             CluDirection = "d"
 
+
 def left(player):
     global Trondirection
     global CluDirection
     if player == "Tron":
-        if Trondirection != "r": #Stops 180 degree turns
-                print(f"Tron {Trondirection} to l")
-                Trondirection = "l"
+        if Trondirection != "r":  # Stops 180 degree turns
+            print(f"Tron {Trondirection} to l")
+            Trondirection = "l"
     elif player == "Clu":
         if CluDirection != "r":
             print(f"Clu {CluDirection} to l")
             CluDirection = "l"
 
+
 def right(player):
     global Trondirection
     global CluDirection
     if player == "Tron":
-        if Trondirection != "l": #Stops 180 degree turns
-                print(f"Tron {Trondirection} to r")
-                Trondirection = "r"
+        if Trondirection != "l":  # Stops 180 degree turns
+            print(f"Tron {Trondirection} to r")
+            Trondirection = "r"
     elif player == "Clu":
         if CluDirection != "l":
             print(f"Clu {CluDirection} to r")
             CluDirection = "r"
 
 
-
 def game_Loop():
     global Trondirection
     global CluDirection
 
-    tx, ty = Tron.pos()
-    cx, cy = Clu.pos()
-    
+    tx, ty = TronEntities.Tron.pos()
+    cx, cy = TronEntities.Clu.pos()
+
     record_Trail()
     TronEntities.game_State = trail_Kill()
-    
+
     if Trondirection == "u":
-        ty += Step    
+        ty += Step
     elif Trondirection == "r":
         tx += Step
     elif Trondirection == "d":
         ty -= Step
     elif Trondirection == "l":
         tx -= Step
-    
+
     if CluDirection == "u":
-        cy += Step    
+        cy += Step
     elif CluDirection == "r":
         cx += Step
     elif CluDirection == "d":
@@ -125,33 +132,34 @@ def game_Loop():
         cx -= Step
 
     if tx < -350 or tx > 350 or ty > 350 or ty < -350:
-        killing_Animation(Tron)
-    
-    if cx < -350 or cx > 350 or cy > 350 or cy < -350:
-        killing_Animation(Clu)
+        killing_Animation(TronEntities.Tron)
 
-    Tron.goto(tx, ty)
-    Clu.goto(cx, cy) 
+    if cx < -350 or cx > 350 or cy > 350 or cy < -350:
+        killing_Animation(TronEntities.Clu)
+
+    TronEntities.Tron.goto(tx, ty)
+    TronEntities.Clu.goto(cx, cy)
 
     if TronEntities.game_State == True:
-        screen.update() #Must run at bottom of function, before .ontimer, which calls the function again
-        screen.ontimer(game_Loop, DELAY) #Calls the function again, causing a loop. DELAY is to reduce glitches
+        screen.update()  # Must run at bottom of function, before .ontimer, which calls the function again
+        screen.ontimer(game_Loop, DELAY)  # Calls the function again, causing a loop. DELAY is to reduce glitches
     else:
         print(f" game state: {TronEntities.game_State}")
-        screen.reset()
+        screen.clear()
         Trondirection = "u"
         CluDirection = "u"
         State_Controls.runGame()
 
 
-
 """Keyboard Recording"""
+
+
 def on_press(key):
     global Trondirection
     global CluDirection
     global Tron_Last_Input
     global Clu_Last_Input
-    
+
     currentTime = time.time()
 
     try:
@@ -182,13 +190,13 @@ def on_press(key):
                 Tron_Last_Input = currentTime
             else:
                 print("Too Early on s")
-    
+
         elif key == keyboard.Key.up:
             if not TronEntities.game_State:
-                    if menu.playerdirection != "d":
-                        menu.playerdirection = "u"
+                if menu.playerdirection != "d":
+                    menu.playerdirection = "u"
 
-            elif TronEntities.game_State:        
+            elif TronEntities.game_State:
                 if currentTime - Clu_Last_Input > delay_Time:
                     Up("Clu")
                     Clu_Last_Input = currentTime
@@ -237,6 +245,7 @@ def on_press(key):
     except AttributeError:
         pass
 
+
 """ Keeping just in case. Use to run things on the release of a key!
 def on_release(key):
     global w_State
@@ -281,11 +290,12 @@ def on_release(key):
         pass    
 """
 """Record Trails and Movement Loop"""
-def record_Trail():
-    Tron_Trail.append(Tron.pos()) #Appends new values to lists
-    Clu_Trail.append(Clu.pos())
 
-    
+
+def record_Trail():
+    Tron_Trail.append(TronEntities.Tron.pos())  # Appends new values to lists
+    Clu_Trail.append(TronEntities.Clu.pos())
+
 
 def trail_Kill():
     global Tron_Trail
@@ -298,11 +308,11 @@ def trail_Kill():
 
     if len(same) != 0:
         for i in range(4):
-            Tron.hideturtle()
-            Clu.hideturtle()
+            TronEntities.Tron.hideturtle()
+            TronEntities.Clu.hideturtle()
             time.sleep(.5)
-            Tron.showturtle()
-            Clu.showturtle()
+            TronEntities.Tron.showturtle()
+            TronEntities.Clu.showturtle()
             time.sleep(.5)
 
         same.clear()
@@ -315,11 +325,11 @@ def trail_Kill():
 
     elif len(Tron_Trail) != len(Tron_set) or len(Clu_Trail) != len(Clu_set):
         for i in range(4):
-            Tron.hideturtle()
-            Clu.hideturtle()
+            TronEntities.Tron.hideturtle()
+            TronEntities.Clu.hideturtle()
             time.sleep(.5)
-            Tron.showturtle()
-            Clu.showturtle()
+            TronEntities.Tron.showturtle()
+            TronEntities.Clu.showturtle()
             time.sleep(.5)
 
         same.clear()

@@ -1,21 +1,34 @@
 import turtle
-import random
 
 screen = turtle.Screen()
-border = turtle.Turtle()
-grid = turtle.Turtle()
+
+border = None
+grid = None
 
 
-#Create Background
+# Create Background
 def create_Background():
     global screen
     screen.setup(width=750, height=750)
     screen.bgcolor("black")
     screen.setworldcoordinates(-375, -375, 375, 375)  # make (0,0) the true visual center
 
-#Create Border
+    # After setworldcoordinates, hide the menu pen if it exists
+    import MainMenu
+    if MainMenu.pen is not None:
+        MainMenu.pen.hideturtle()
+        MainMenu.pen.penup()
+
+
+# Create Border
 def create_Border():
     global border
+    if border is not None:
+        border.clear()  # clear any old drawings
+        border.hideturtle()  # make sure it's hidden
+
+    border = turtle.Turtle()
+    border.hideturtle()
     border.color("cyan")
     border.speed(0)
     border.pensize(4)
@@ -26,31 +39,35 @@ def create_Border():
     for _ in range(4):
         border.forward(700)
         border.left(90)
-
+    border.penup()
+    border.goto(1000, 1000)
     border.hideturtle()
 
 
-#Create Grid Lines
+# Create Grid Lines
 def create_Grid():
     global grid
+    grid = turtle.Turtle()
+    grid.hideturtle()
     grid.speed(0)
     grid.color("gray20")
     grid.pensize(1)
 
-    #Vertical Lines
+    # Vertical Lines
     for x in range(-350, 351, 25):
         grid.penup()
         grid.goto(x, -350)
         grid.pendown()
         grid.goto(x, 350)
 
-    #Horizontal Lines
+    # Horizontal Lines
     for y in range(-350, 351, 25):
         grid.penup()
         grid.goto(-350, y)
         grid.pendown()
         grid.goto(350, y)
-
+    grid.penup()
+    grid.goto(1000, 1000)
     grid.hideturtle()
 
 

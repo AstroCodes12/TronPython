@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="mmenu func">
-      <change afterPath="$PROJECT_DIR$/src/MainMenu.py" afterDir="false" />
+    <list default="true" id="c8e1469c-a0d6-4643-85b4-0bd119fe6406" name="Changes" comment="mmenu func no test bench">
+      <change afterPath="$PROJECT_DIR$/src/ScoreMgr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tron_scores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBench/Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBench/XanderMapTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBench/test2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBench/testMenu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Map.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/State_Controls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/State_Controls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TronEntities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronEntities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,21 +44,36 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GitHubPullRequestState">{
-  &quot;prStates&quot;: [
-    {
-      &quot;id&quot;: {
-        &quot;id&quot;: &quot;PR_kwDOQF8dxc6wOqM1&quot;,
-        &quot;number&quot;: 1
-      },
-      &quot;lastSeen&quot;: 1762532665687
-    }
-  ]
-}</component>
+  <component name="GitHubPullRequestState"><![CDATA[{}]]></component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Test-branch" />
+                    <option name="lastUsedInstant" value="1763498969" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="Thomas" />
+                    <option name="lastUsedInstant" value="1763498947" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/AstroCodes12/TronPython.git&quot;,
-    &quot;accountId&quot;: &quot;421a93b3-dc57-4449-be2e-6bb4090fa610&quot;
+    &quot;accountId&quot;: &quot;a2b8143f-30f2-47fe-9579-f3744409fd6e&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -59,36 +87,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.MainMenu.executor": "Run",
-    "Python.Map with Player test.executor": "Run",
-    "Python.Map.executor": "Run",
-    "Python.Tron Map.executor": "Run",
-    "Python.mainMenu.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "#1 on Thomas",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.GameFunctions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MainMenu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Map with Player test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Map.executor&quot;: &quot;Run&quot;,
+    &quot;Python.State_Controls.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tron Map.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mainMenu.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Test-branch&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
-        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
       </set>
     </attachedChunks>
   </component>
