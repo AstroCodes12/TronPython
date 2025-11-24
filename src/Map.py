@@ -1,16 +1,20 @@
 import turtle
-import random
 
 screen = turtle.Screen()
-border = turtle.Turtle()
-grid = turtle.Turtle()
+
+border = None
+grid = None
 
 <<<<<<< HEAD
 # Create Background
 =======
 
+<<<<<<< HEAD
 #Create Background
 >>>>>>> 0ad9867 (Changed main menu to be navigate into the box to start. Menu to game and back to menu works, when configured this way)
+=======
+# Create Background
+>>>>>>> 93b7c1e (Game finished!!)
 def create_Background():
     """Builds the turtle screen on which the rest of the background features will be drawn"""
     global screen
@@ -18,10 +22,26 @@ def create_Background():
     screen.bgcolor("black")
     screen.setworldcoordinates(-375, -375, 375, 375)  # Make (0,0) the true visual center
 
+<<<<<<< HEAD
+=======
+    # After setworldcoordinates, hide the menu pen if it exists
+    import MainMenu
+    if MainMenu.pen is not None:
+        MainMenu.pen.hideturtle()
+        MainMenu.pen.penup()
+
+
+>>>>>>> 93b7c1e (Game finished!!)
 # Create Border
 def create_Border():
     """Draws the border of the playable area just off the edges of the screen's width and height"""
     global border
+    if border is not None:
+        border.clear()  # clear any old drawings
+        border.hideturtle()  # make sure it's hidden
+
+    border = turtle.Turtle()
+    border.hideturtle()
     border.color("cyan")
     border.speed(0)
     border.pensize(4)
@@ -32,7 +52,8 @@ def create_Border():
     for _ in range(4):
         border.forward(700)
         border.left(90)
-
+    border.penup()
+    border.goto(1000, 1000)
     border.hideturtle()
 
 
@@ -40,6 +61,8 @@ def create_Border():
 def create_Grid():
     """Builds the grid lines across the playable area to create a 28x28 square map where each unit is 25x25 pixels"""
     global grid
+    grid = turtle.Turtle()
+    grid.hideturtle()
     grid.speed(0)
     grid.color("gray20")
     grid.pensize(1)
@@ -57,7 +80,8 @@ def create_Grid():
         grid.goto(-350, y)
         grid.pendown()
         grid.goto(350, y)
-
+    grid.penup()
+    grid.goto(1000, 1000)
     grid.hideturtle()
 
 
